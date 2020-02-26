@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Dashboard from "@/views/Dashboard.vue";
-import MessageViewer from "@/views/MessageViewer.vue";
+import ConversationViewer from "@/views/ConversationViewer.vue";
 
 Vue.use(VueRouter);
 
@@ -14,7 +14,7 @@ const routes = [
       {
         path: "conversation/:id",
         name: "ROUTE_VIEW_CONVERSATION",
-        component: MessageViewer
+        component: ConversationViewer
       }
     ]
   },

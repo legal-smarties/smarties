@@ -3,8 +3,8 @@
         <el-button @click="closeViewer()">
             <i class="fa fa-arrow-left"/>
         </el-button>
-        <div class="conversation__message" v-for="message in conversation.messages" v-html="message.content"/>
-        <smart-list />
+        <div class="" class="conversation__message" v-for="message in conversation.messages" v-html="message.content"/>
+        <smart-list :conversation="conversation" />
     </div>
 </template>
 
@@ -13,7 +13,7 @@
     import SmartList from "@/components/SmartList.vue"
 
     export default Vue.extend({
-        name: "MessageViewer",
+        name: "ConversationViewer",
         components: {
             "smart-list": SmartList
         },
@@ -33,11 +33,6 @@
 <style lang="scss" scoped>
     .conversation__message {
         width: 90%;
+        background: rgba(0,0,0,0.1);
     }
-.conversation__message:nth-child(even) {
-    background: rgba(0,0,0,0.1);
-}
-.conversation__message:nth-child(odd) {
-    background: rgb(0, 208, 255);
-}
 </style>

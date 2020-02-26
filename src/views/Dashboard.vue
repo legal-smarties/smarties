@@ -1,7 +1,7 @@
 <template>
     <div class="dashboard">
         <div class="dashboard__header is-flex">
-            <div class="m-auto m-l-0 title">Smart Dashboard</div>
+            <div class="m-auto m-l-0 title">Lawbacca</div>
         </div>
         <div class="dashboard__content columns m-none">
             <div class="column left-column">

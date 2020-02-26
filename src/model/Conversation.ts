@@ -1,5 +1,5 @@
 import { Tag } from './Tag'
 
-export interface Document {
+export interface Conversation {
     tags: Tag[]
 }

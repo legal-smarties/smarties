@@ -1,19 +1,19 @@
 <template>
-    <div>test</div>
+    <div>{{ conversation.tags }}</div>
 </template>
 
 <script lang="ts">
 import Vue from "vue"
-import { Document } from "@/model/Document"
+import { Conversation } from "@/model/Conversation"
 
 export default Vue.extend({
     name: "SmartList",
-    // props: {
-    //     document: {
-    //         required: true,
-    //         type: Object as () => Document
-    //     }
-    // }
+    props: {
+        conversation: {
+            required: true,
+            type: Object as () => Conversation
+        }
+    }
 })
 </script>
 
