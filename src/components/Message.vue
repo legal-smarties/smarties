@@ -35,7 +35,7 @@
     }
 }
     .message-card {
-        border: 1px solid rgba(0,0,0,0.05);
+        border: 2px solid rgba(0,0,0,0.05);
         &:hover {
             background: rgba(0,0,0,0.05);
             cursor: pointer;
