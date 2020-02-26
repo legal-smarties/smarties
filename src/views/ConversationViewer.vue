@@ -10,7 +10,7 @@
                     <div :class="{ 'is-mine': message.origin === 'Ich'}" class="conversation__message" v-clean-html="getTaggedMessage(message.content)"></div>
                 </div>
             </div>
-            <smart-list class="column" :conversation="conversation" :documents="documents" />
+            <smart-list class="column" :conversation="conversation" :documents="documents" :selectedTags="selectedTags" />
         </div>
     </div>
 </template>
@@ -48,7 +48,18 @@
                 return taggedTextAr.join(" ")
             }
         }
-    })
+    },
+    computed: {
+        conversation() {
+            return this.$store.state.conversations[this.$route.params.id]
+        }
+    },
+    methods: {
+        closeViewer() {
+            this.$router.push({ name: "ROUTE_DASHBOARD" })
+        }
+    }
+})
 </script>
 
 <style lang="scss" scoped>

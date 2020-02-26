@@ -15,7 +15,7 @@
 <script lang="ts">
 import Vue from "vue"
 import { Conversation } from "@/model/Conversation"
-import { KnowledgeDocument } from "@/model/model"
+import { KnowledgeDocument, Tag } from "@/model/model"
 import * as _ from "lodash";
 import Document2 from "@/components/Document2.vue"
 
@@ -32,19 +32,10 @@ export default Vue.extend({
         documents: {
             required: true,
             type: Array as () => KnowledgeDocument[]
-        }
-    },
-    watch: {
-        conversation: {
-            immediate: true,
-            handler(conversation) {
-                this.selectedTags = conversation.messages[0].tags.map(tag => tag.name)
-            }
-        }
-    },
-    data() {
-        return {
-            selectedTags: []
+        },
+        selectedTags: {
+            required: true,
+            type: Array as () => Tag[]
         }
     },
     computed: {
