@@ -1,7 +1,7 @@
 <template>
     <div @click="$emit('click')" class="message-card columns m-none">
         <div class="column is-narrow is-flex profile">
-            <i class="fa fa-user m-auto is-size-4"/>
+            <i class="fa fa-user m-auto is-size-5"/>
         </div>
         <div class="column">
             <div>{{messageData.origin}}</div>
