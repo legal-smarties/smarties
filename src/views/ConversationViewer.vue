@@ -10,37 +10,48 @@
                     <div :class="{ 'is-mine': message.origin === 'Ich'}" class="conversation__message" v-html="message.content"></div>
                 </div>
             </div>
-            <smart-list class="column" :conversation="conversation" :documents="documents" />
+            <smart-list class="column" :conversation="conversation" :documents="documents" :selectedTags="selectedTags" />
         </div>
     </div>
 </template>
 
 <script lang="ts">
-    import Vue from "vue"
-    import SmartList from "@/components/SmartList.vue"
-    import { testRatedDocuments } from "@/artificalIntelligenceLayer/index"
+import Vue from "vue"
+import SmartList from "@/components/SmartList.vue"
+import { testRatedDocuments } from "@/artificalIntelligenceLayer/index"
+import { Tag } from '@/model/model'
 
-    export default Vue.extend({
-        name: "ConversationViewer",
-        components: {
-            "smart-list": SmartList
-        },
-        data() {
-            return {
-                documents: testRatedDocuments
-            }
-        },
-        computed: {
-            conversation() {
-                return this.$store.state.conversations[this.$route.params.id]
-            }
-        },
-        methods: {
-            closeViewer() {
-                this.$router.push({ name: "ROUTE_DASHBOARD" })
+export default Vue.extend({
+    name: "ConversationViewer",
+    components: {
+        "smart-list": SmartList
+    },
+    data() {
+        return {
+            documents: testRatedDocuments,
+            selectedTags: [] as Tag[]
+        }
+    },
+    watch: {
+        conversation: {
+            immediate: true,
+            handler(conversation) {
+                const tagLists = conversation.messages.map(message => message.tags)
+                this.selectedTags = _.uniqBy(_.spread(_.union)(tagLists), e => e.name)
             }
         }
-    })
+    },
+    computed: {
+        conversation() {
+            return this.$store.state.conversations[this.$route.params.id]
+        }
+    },
+    methods: {
+        closeViewer() {
+            this.$router.push({ name: "ROUTE_DASHBOARD" })
+        }
+    }
+})
 </script>
 
 <style lang="scss" scoped>
