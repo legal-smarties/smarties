@@ -16,7 +16,7 @@ export default new Vuex.Store({
             type: "E-Mail",
             subject: "Subject Sample A",
             content: "Hallo Herr Anwalt",
-            date: "today",
+            date: "18.10.2019 um 7.31",
             tags: [
               { name: "Mindestlohn" },
               { name: "Schwangerschaft" },
@@ -29,7 +29,7 @@ export default new Vuex.Store({
             type: "E-Mail",
             subject: "Subject Sample B",
             content: "Hallo Herr Meier!",
-            date: "lastWeek",
+            date: "19.10.2019 um 9.39",
             tags: [
               { name: "Mindestlohn" },
               { name: "Schwangerschaft" }
@@ -41,7 +41,7 @@ export default new Vuex.Store({
             subject: "Subject Sample C",
             type: "E-Mail",
             content: "Ich habe eine Frage ...",
-            date: "lastWeek",
+            date: "19.10.2019 um 10.20",
             tags: [
               { name: "Mindestlohn" },
               { name: "Schwangerschaft" }

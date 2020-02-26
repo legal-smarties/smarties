@@ -5,6 +5,9 @@ import store from './store';
 import ElementUI from 'element-ui';
 Vue.use(ElementUI)
 
+import { cleanHtmlDirective } from "./directives/cleanHtml"
+Vue.directive("clean-html", cleanHtmlDirective)
+
 import "bulma";
 import "@fortawesome/fontawesome-free/css/all.css";
 import 'element-ui/lib/theme-chalk/index.css';

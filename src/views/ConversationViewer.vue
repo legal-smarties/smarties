@@ -7,7 +7,7 @@
             <div class="column">
                 <div :key=index v-for="(message, _, index) in conversation.messages">
                     <div class="conversation__message__date">{{message.date}}</div>
-                    <div :class="{ 'is-mine': message.origin === 'Ich'}" class="conversation__message" v-html="message.content"></div>
+                    <div :class="{ 'is-mine': message.origin === 'Ich'}" class="conversation__message" v-clean-html="getTaggedMessage(message.content)"></div>
                 </div>
             </div>
             <smart-list class="column" :conversation="conversation" :documents="documents" />
@@ -19,7 +19,6 @@
     import Vue from "vue"
     import SmartList from "@/components/SmartList.vue"
     import { testRatedDocuments } from "@/artificalIntelligenceLayer/index"
-
     export default Vue.extend({
         name: "ConversationViewer",
         components: {
@@ -38,6 +37,15 @@
         methods: {
             closeViewer() {
                 this.$router.push({ name: "ROUTE_DASHBOARD" })
+            },
+            getTaggedMessage(text: string){
+                const tags = ["Mindestlohn"]
+                let taggedTextAr = text.split(" ").map(word => {
+                    if(word.indexOf("Mindestlohn") > -1) {
+                            return`<b>${word}</b>`
+                        } else return word
+                })
+                return taggedTextAr.join(" ")
             }
         }
     })
