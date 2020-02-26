@@ -4,7 +4,7 @@
             <i class="fa fa-user m-auto is-size-4"/>
         </div>
         <div class="column">
-            <div>{{messageData.name}}</div>
+            <div class="m-auto">{{messageData.name}}</div>
         </div>
     </div>
 </template>
