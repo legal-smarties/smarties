@@ -16,37 +16,19 @@
 </template>
 
 <script lang="ts">
-    import Vue from "vue"
-    import SmartList from "@/components/SmartList.vue"
-    import { testRatedDocuments } from "@/artificalIntelligenceLayer/index"
-    export default Vue.extend({
-        name: "ConversationViewer",
-        components: {
-            "smart-list": SmartList
-        },
-        data() {
-            return {
-                documents: testRatedDocuments
-            }
-        },
-        computed: {
-            conversation() {
-                return this.$store.state.conversations[this.$route.params.id]
-            }
-        },
-        methods: {
-            closeViewer() {
-                this.$router.push({ name: "ROUTE_DASHBOARD" })
-            },
-            getTaggedMessage(text: string){
-                const tags = ["Mindestlohn"]
-                let taggedTextAr = text.split(" ").map(word => {
-                    if(word.indexOf("Mindestlohn") > -1) {
-                            return`<b>${word}</b>`
-                        } else return word
-                })
-                return taggedTextAr.join(" ")
-            }
+import Vue from "vue"
+import SmartList from "@/components/SmartList.vue"
+import { testRatedDocuments } from "@/artificalIntelligenceLayer/index"
+import { Tag } from '@/model/model'
+
+export default Vue.extend({
+    name: "ConversationViewer",
+    components: {
+        "smart-list": SmartList
+    },
+    data() {
+        return {
+            documents: testRatedDocuments
         }
     },
     computed: {
@@ -57,6 +39,15 @@
     methods: {
         closeViewer() {
             this.$router.push({ name: "ROUTE_DASHBOARD" })
+        },
+        getTaggedMessage(text: string){
+            const tags = ["Mindestlohn"]
+            let taggedTextAr = text.split(" ").map(word => {
+                if(word.indexOf("Mindestlohn") > -1) {
+                        return`<b>${word}</b>`
+                    } else return word
+            })
+            return taggedTextAr.join(" ")
         }
     }
 })
