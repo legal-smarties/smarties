@@ -37,7 +37,7 @@ export default Vue.extend({
             immediate: true,
             handler(conversation) {
                 const tagLists = conversation.messages.map(message => message.tags)
-                this.selectedTags = _.uniqBy(_.spread(_.union)(tagLists), e => e.name)
+                this.selectedTags = _.uniqBy(_.spread(_.union)(tagLists), e => e.name).map(e => e.name)
             }
         }
     },
