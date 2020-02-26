@@ -1,15 +1,13 @@
 <template>
-    <div>
+    <div class="dashboard">
         <div class="dashboard__header is-flex">
             <div class="m-auto m-l-0 title">Smart Dashboard</div>
         </div>
-        <div class="dashboard__content columns">
-            <div class="column">
-                <message @click="openMessage(d.id)" v-for="d in messages" :message-data="d"/>
+        <div class="dashboard__content columns m-none">
+            <div class="column left-column">
+                <message :class="{'selected': isMessageSelected(d.id)}" @click="openMessage(d.id)" v-for="d in messages" :message-data="d"/>
             </div>
-            <div class="column">
-                <router-view/>
-            </div>
+            <router-view class="column is-two-thirds"/>
         </div>
         <div class="dashboard__footer">
         </div>
@@ -33,12 +31,22 @@
         methods: {
             openMessage(id: number){
                 this.$router.push(`/messages/${id}`)
+            },
+            isMessageSelected(id: number) {
+                return this.$route.params.id && parseInt(this.$route.params.id, 10) === id
             }
         }
     })
 </script>
 
 <style lang="scss" scoped>
+    .dashboard {
+        height: 100%;
+        &__content {
+            height: 100%;
+        }
+    }
+
     .dashboard__header {
         filter: drop-shadow(0px 0px 2px rgba(0,0,0,1));
         background: #00adff;
@@ -48,5 +56,10 @@
         & * {
             color: white;
         }
+    }
+
+    .left-column {
+        padding: 0;
+        border-right: 1px solid rgba(0,0,0,0.05);
     }
 </style>
