@@ -5,7 +5,7 @@
         </div>
         <div class="dashboard__content columns m-none">
             <div class="column left-column">
-                <message :class="{'selected': isMessageSelected(d.id)}" @click="openMessage(d.id)" v-for="d in messages" :message-data="d"/>
+                <message :class="{'selected': isConversationSelected(d.id)}" @click="openConversation(d.id)" v-for="d in conversations" :message-data="d"/>
             </div>
             <router-view class="column is-two-thirds"/>
         </div>
@@ -24,15 +24,15 @@
             Message,
         },
         computed: {
-            messages() {
-                return this.$store.state.messages
+            conversations() {
+                return this.$store.state.conversations
             }
         },
         methods: {
-            openMessage(id: number){
-                this.$router.push(`/messages/${id}`)
+            openConversation(id: number){
+                this.$router.push(`/conversation/${id}`)
             },
-            isMessageSelected(id: number) {
+            isConversationSelected(id: number) {
                 return this.$route.params.id && parseInt(this.$route.params.id, 10) === id
             }
         }

@@ -12,8 +12,8 @@ const routes = [
     component: Dashboard,
     children: [
       {
-        path: "messages/:id",
-        name: "ROUTE_VIEW_MESSAGE",
+        path: "conversation/:id",
+        name: "ROUTE_VIEW_CONVERSATION",
         component: MessageViewer
       }
     ]

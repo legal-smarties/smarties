@@ -7,6 +7,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     conversations: [{
+        id: 0,
         name: "Herr Meier",
         messages: [
           {
